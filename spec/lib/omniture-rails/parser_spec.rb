@@ -1,39 +1,23 @@
 require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
-describe "OmnitureRails::Mapper" do
+describe "OmnitureRails:Parser" do
   before :all do
-    OmnitureRails::Mapper.define_map do
-      map :controller => "searches", :to => {
-        :pageName => "Search"
-      }
-      
-      map :controller => "searches" do
-        map :action => "show", :to => {:pageName => "SearchResults"}
-      end
-      
-      map :controller => "profiles" do
-        map :action => "show" do
-          map :current, {
-            :pageName => "MyProfile"
-          }
-          map "MyProfile"
-        end
-      end
-      
-    end
   end
   
-  it "should associate a hash with the first specification that matches" do
-    OmnitureRails::Mapper.define_map do
-      map :controller => "searches", :to => {
-        :pageName => "Search"
-      }
-      
-      map :controller => "searches" do
-        map :action => "show", :to => {:pageName => "SearchResults"}
-      end
-    end
+  it "should build a node tree from a properly formatted file" do
+    tree = OmnitureRails::Parser.new(File.read('fixtures/search.hs'))
     
-    OmnitureRails::Mapper.map({:controller => "searches", :action => "show"}).should == {:pageName => "Search"}
+    tree.values[0].key.should == :channel
+    tree.values[0].pre_value.should == "Search"
+    
+    tree.children[0].selector.should == [{:action => "new"}]
+    tree.children[0].values[0].key.should == :pageName
+    tree.children[0].values[0].pre_value.should == "New Search"
+    
+    tree.children[1].selector.should == [{:action => "show"}]
+    tree.children[1].values[0].key.should == :pageName
+    tree.children[1].values[0].pre_value.should == "Search Results"
+    tree.children[1].values[1].key.should == :keywords
+    tree.children[1].values[1].pre_value.should == "params[:keywords]"
   end
 end
