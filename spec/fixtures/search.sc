@@ -9,3 +9,4 @@ action:show
   
   filter
     :filter_terms= filter_terms
+  
