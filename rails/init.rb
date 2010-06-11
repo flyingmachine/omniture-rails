@@ -17,7 +17,7 @@ require 'action_controller_extension'
 end 
 
 OmnitureRails.config.sc_directory = File.join(RAILS_ROOT, "app", "omniture")
-OMNITURE_TREES = Dir[File.join(OmnitureRails.config.sc_directory, '*.sc')].inject({}) do |hash, filename|
-  hash[filename[0..-4].to_sym] = OmnitureRails::Parser.new(File.join(OmnitureRails.config.sc_directory, filename)).to_tree
+OmnitureRails::TREES = Dir[File.join(OmnitureRails.config.sc_directory, '*.sc')].inject({}) do |hash, filename|
+  hash[File.basename(filename)[0..-4].to_sym] = OmnitureRails::Parser.new(File.read(filename)).to_tree
   hash
 end
