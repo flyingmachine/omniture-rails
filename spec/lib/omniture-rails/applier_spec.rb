@@ -9,15 +9,15 @@ describe "OmnitureRails::Applier" do
       :filter => { :tags => "cat, shakespeare"}
     }
     
-    priority_values = {:keywords => "tongue paper"}
+    priority_map = {:keywords => "tongue paper"}
     mapper_context = Context.new
     
-    values = OmnitureRails::Applier.new(input, tree, priority_values, mapper_context).result
+    values = OmnitureRails::Applier.new(input, tree, priority_map, mapper_context).result
     
     values.should == {
       :channel => "Search",
       :pageName => "Search Results",
-      :keywords => priority_values[:keywords],
+      :keywords => priority_map[:keywords],
       :filter_terms => mapper_context.filter_terms
     }
   end

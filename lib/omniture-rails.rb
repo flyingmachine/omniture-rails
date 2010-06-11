@@ -11,9 +11,9 @@ module OmnitureRails
       OmnitureRails::Config.instance
     end
     
-    def values_for(input, selector_config, priority_values, mapper_context)
+    def values_for(input, selector_config, priority_map, mapper_context)
       tree = tree_for_selector_config(selector_config)      
-      values = OmnitureRails::Applier.new(input, tree, priority_values, mapper_context).result
+      values = OmnitureRails::Applier.new(input, tree, priority_map, mapper_context).result
       OmnitureRails.config.prop_map.each do |business_name, prop_name|
         values[prop_name] = values.delete(business_name)
       end

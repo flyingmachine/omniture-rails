@@ -1,16 +1,16 @@
 module OmnitureRails
   class Applier
-    def initialize(input, tree, priority_values, mapper_context)
+    def initialize(input, tree, priority_map, mapper_context)
       @input = input
       @tree = tree
       @mapper_context = mapper_context
-      @priority_values = priority_values
+      @priority_map = priority_map
     end
     
     def result
       @result = {}
       apply_tree
-      @result.merge(@priority_values)
+      @result.merge(@priority_map)
     end
     
     def apply_tree
@@ -44,7 +44,7 @@ module OmnitureRails
     end
     
     def priority_keys
-      @priority_keys ||= @priority_values.keys
+      @priority_keys ||= @priority_map.keys
     end
   end
 end

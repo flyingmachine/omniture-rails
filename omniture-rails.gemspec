@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{omniture-rails}
-  s.version = "0.0.0"
+  s.version = "0.0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Daniel Higginbotham"]
@@ -29,6 +29,7 @@ Gem::Specification.new do |s|
      "lib/omniture-rails/node.rb",
      "lib/omniture-rails/parser.rb",
      "lib/omniture-rails/value.rb",
+     "omniture-rails.gemspec",
      "rails/init.rb",
      "spec/fixtures/application.sc",
      "spec/fixtures/search.sc",
@@ -42,7 +43,7 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://github.com/flyingmachine/omniture-rails}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.6}
+  s.rubygems_version = %q{1.3.5}
   s.summary = %q{Tool for integrating Omniture in a Rails project}
   s.test_files = [
     "spec/lib/omniture-rails/applier_spec.rb",
@@ -56,12 +57,12 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
-      s.add_development_dependency(%q<rspec>, [">= 1.2.9"])
+      s.add_development_dependency(%q<rspec>, [">= 1.3.0"])
     else
-      s.add_dependency(%q<rspec>, [">= 1.2.9"])
+      s.add_dependency(%q<rspec>, [">= 1.3.0"])
     end
   else
-    s.add_dependency(%q<rspec>, [">= 1.2.9"])
+    s.add_dependency(%q<rspec>, [">= 1.3.0"])
   end
 end
 

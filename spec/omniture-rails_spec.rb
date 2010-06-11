@@ -15,13 +15,13 @@ describe "OmnitureRails integration" do
       :filter_terms => :prop2
     }
     
-    priority_values = {:keywords => "tongue paper"}
-    values = OmnitureRails.values_for(@input, 'search.sc', priority_values, @mapper_context)
+    priority_map = {:keywords => "tongue paper"}
+    values = OmnitureRails.values_for(@input, 'search.sc', priority_map, @mapper_context)
     
     values.should == {
       :channel => "Search",
       :pageName => "Search Results",
-      :prop1 => priority_values[:keywords],
+      :prop1 => priority_map[:keywords],
       :prop2 => @mapper_context.filter_terms
     }
   end
