@@ -5,7 +5,7 @@ action:new
   
 action:show
   :pageName Search Results
-  :keywords= params[:keywords]
+  :keywords= keywords
   
   filter
     :filter_terms= filter_terms

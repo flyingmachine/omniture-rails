@@ -62,7 +62,7 @@ module OmnitureRails
         selector = {}
         @stripped_source.split(" ").each do |pair|
           key, value = pair.split(":")
-          selector[key.to_sym] = value || true
+          selector[key.to_sym] = value || nil
         end
         selector
       end

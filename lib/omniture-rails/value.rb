@@ -9,6 +9,13 @@ module OmnitureRails
       @type = match[2].empty? ? :static : :dynamic
     end
     
+    def static?
+      @type == :static
+    end
+    
+    def dynamic?
+      @type == :dynamic
+    end
     
   end
 end

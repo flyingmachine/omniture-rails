@@ -1,9 +1,6 @@
 require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
-describe "OmnitureRails:Parser" do
-  before :all do
-  end
-  
+describe "OmnitureRails::Parser" do
   it "should build a node tree from a properly formatted file" do
     tree = OmnitureRails::Parser.new(File.read(File.join(OmnitureRails.config.sc_directory, 'search.sc'))).to_tree
     
