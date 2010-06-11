@@ -6,7 +6,7 @@ begin
   Jeweler::Tasks.new do |gem|
     gem.name = "omniture-rails"
     gem.summary = %Q{Tool for integrating Omniture in a Rails project}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.description = %Q{Tool for integrating Omniture in a Rails project}
     gem.email = "daniel@flyingmachinestudios.com"
     gem.homepage = "http://github.com/flyingmachine/omniture-rails"
     gem.authors = ["Daniel Higginbotham"]
