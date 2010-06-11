@@ -1,1 +1,1 @@
-:applicationName WOO Applicationo
+:applicationName WOO Application

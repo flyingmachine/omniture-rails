@@ -17,7 +17,15 @@ describe "OmnitureRails::Parser" do
     tree.children[1].values[0].type.should == :static
     
     tree.children[1].values[1].key.should == :keywords
-    tree.children[1].values[1].pre_value.should == "params[:keywords]"
+    tree.children[1].values[1].pre_value.should == "keywords"
     tree.children[1].values[1].type.should == :dynamic
+  end
+  
+  it "should import values" do
+    tree = OmnitureRails::Parser.new(File.read(File.join(OmnitureRails.config.sc_directory, 'with_import.sc'))).to_tree
+    tree.values[0].key.should == :applicationName
+    tree.values[0].pre_value.should == "WOO Application"
+    tree.values[1].key.should == :test
+    tree.values[1].pre_value.should == "yes"
   end
 end

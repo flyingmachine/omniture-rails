@@ -4,6 +4,28 @@ module OmnitureRails
     
     def initialize(source)
       @source = source
+      prepend_imports
+    end
+    
+    def prepend_imports
+      already_imported = []
+      process_imports(@source, already_imported)
+    end
+    
+    def process_imports(current_source, already_imported)
+      current_source.each_line do |line|
+        line = Line.new(line)
+        if line.type == :import
+          filename = line.to_import
+          next if already_imported.include?(filename)
+          already_imported << filename
+          new_source = File.read(File.join(OmnitureRails.config.sc_directory, filename))
+          @source = new_source + "\n" + @source
+          process_imports(new_source, already_imported)
+        else
+          break
+        end
+      end
     end
     
     def to_tree
@@ -16,11 +38,13 @@ module OmnitureRails
         line = Line.new(line)
         
         if line.type == :value
+          # TODO move this comment
           # Every drop in indentation corresponds to a new node;
           # It doesn't make sense to drop indentation level and 
           # define further values
-          raise SyntaxError, "you must define all values before any sub-selctors" if line.indentation_level < indentation_level
           current_node.values << line.to_value
+        elsif line.type == :import
+          next
         else
           if line.indentation_level >= indentation_level
             node_stack.push current_node
@@ -40,6 +64,7 @@ module OmnitureRails
     
     class Line
       VALUE_INDICATOR = 58
+      IMPORT_INDICATOR = 64
       
       attr_reader :source, :stripped_source
       
@@ -55,7 +80,12 @@ module OmnitureRails
       end
       
       def type
-        @stripped_source[0] == VALUE_INDICATOR ? :value : :selector
+        case @stripped_source[0]
+        when VALUE_INDICATOR: :value
+        when IMPORT_INDICATOR: :import
+        else
+          :selector
+        end
       end
       
       def to_selector
@@ -69,6 +99,10 @@ module OmnitureRails
       
       def to_value
         Value.new(self)
+      end
+      
+      def to_import
+        /@import (.*)/.match(@stripped_source)[1]
       end
     end
   end
