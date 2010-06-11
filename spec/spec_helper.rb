@@ -8,3 +8,12 @@ require 'spec/autorun'
 Spec::Runner.configure do |config|
   OmnitureRails.config.sc_directory = File.join(File.dirname(__FILE__), 'fixtures')
 end
+
+class Context
+  def keywords
+    "juice mirror"
+  end
+  def filter_terms
+    "cat shakespeare"
+  end
+end

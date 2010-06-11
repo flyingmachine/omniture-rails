@@ -9,15 +9,6 @@ describe "OmnitureRails::Applier" do
       :filter => { :tags => "cat, shakespeare"}
     }
     
-    class Context
-      def keywords
-        "juice mirror"
-      end
-      def filter_terms
-        "cat shakespeare"
-      end
-    end
-    
     priority_values = {:keywords => "tongue paper"}
     mapper_context = Context.new
     
