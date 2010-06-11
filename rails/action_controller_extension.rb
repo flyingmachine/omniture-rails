@@ -17,4 +17,4 @@ module OmnitureRails
   end
 end
 
-ApplicationController.send(:include, OmnitureRails::ActionControllerExtension)
+ActionController::Base.send(:include, OmnitureRails::ActionControllerExtension)

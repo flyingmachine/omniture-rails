@@ -6,6 +6,7 @@
 $LOAD_PATH << File.dirname(__FILE__)
 
 require File.join(File.dirname(__FILE__), '..', 'lib', 'omniture-rails')
+require 'concern'
 require 'action_controller_extension'
 
 %w{ views }.each do |dir|
