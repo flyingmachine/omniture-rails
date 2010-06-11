@@ -1,5 +1,5 @@
 module OmnitureRails
-  class Mapper
+  class Applier
     def initialize(input, tree, priority_values, mapper_context)
       @input = input
       @tree = tree

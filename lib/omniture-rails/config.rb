@@ -1,6 +1,6 @@
 module OmnitureRails
   class Config
     include Singleton
-    attr_accessor :sc_directory
+    attr_accessor :sc_directory, :prop_map
   end
 end
