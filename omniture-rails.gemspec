@@ -37,6 +37,7 @@ Gem::Specification.new do |s|
      "spec/fixtures/application.sc",
      "spec/fixtures/config.yml",
      "spec/fixtures/search.sc",
+     "spec/fixtures/selectors_with_groups.sc",
      "spec/fixtures/with_import.sc",
      "spec/lib/omniture-rails/applier_spec.rb",
      "spec/lib/omniture-rails/config_spec.rb",

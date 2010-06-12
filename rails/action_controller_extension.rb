@@ -2,8 +2,8 @@ module OmnitureRails
   module ActionControllerExtension
     extend Concern
     included do
-      helper_attr :omniture_input, :omniture_priority_map
       attr_accessor :omniture_input, :omniture_priority_map
+      helper_attr :omniture_input, :omniture_priority_map
       
       before_filter :set_omniture_input
     end
@@ -13,7 +13,7 @@ module OmnitureRails
     
     module InstanceMethods
       def set_omniture_input
-        omniture_input = params
+        self.omniture_input = params
       end
     end
   end
