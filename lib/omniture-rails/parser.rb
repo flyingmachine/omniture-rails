@@ -37,15 +37,14 @@ module OmnitureRails
         next if line.strip.empty?
         line = Line.new(line)
         
-        if line.type == :value
+        case line.type 
+        when :value
           # TODO move this comment
           # Every drop in indentation corresponds to a new node;
           # It doesn't make sense to drop indentation level and 
           # define further values
           current_node.values << line.to_value
-        elsif line.type == :import
-          next
-        else
+        when :selector
           if line.indentation_level >= indentation_level
             node_stack.push current_node
           else
@@ -55,6 +54,8 @@ module OmnitureRails
           current_node = Node.new
           current_node.selector = line.to_selector
           node_stack.last.children << current_node
+        else
+          next
         end
         indentation_level = line.indentation_level        
       end
@@ -65,6 +66,7 @@ module OmnitureRails
     class Line
       VALUE_INDICATOR = 58
       IMPORT_INDICATOR = 64
+      COMMENT_INDICATOR = 47
       
       attr_reader :source, :stripped_source
       
@@ -83,6 +85,7 @@ module OmnitureRails
         case @stripped_source[0]
         when VALUE_INDICATOR: :value
         when IMPORT_INDICATOR: :import
+        when COMMENT_INDICATOR: :comment
         else
           :selector
         end
