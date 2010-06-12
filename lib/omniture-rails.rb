@@ -1,4 +1,5 @@
 require 'singleton'
+require 'yaml'
 require 'omniture-rails/applier'
 require 'omniture-rails/config'
 require 'omniture-rails/node'

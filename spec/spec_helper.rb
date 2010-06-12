@@ -5,9 +5,12 @@ require 'omniture-rails'
 require 'spec'
 require 'spec/autorun'
 
+FIXTURE_DIRECTORY = File.join(File.dirname(__FILE__), 'fixtures')
+OmnitureRails.config.sc_directory = FIXTURE_DIRECTORY
+
 Spec::Runner.configure do |config|
-  OmnitureRails.config.sc_directory = File.join(File.dirname(__FILE__), 'fixtures')
 end
+
 
 class Context
   def keywords

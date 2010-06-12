@@ -1,0 +1,6 @@
+sc_directory: dir
+prop_map:
+  :keywords: :chassis
+tracking_account: dev
+visitor_namespace: namespace
+noscript_img_src: http://127.0.0.1
