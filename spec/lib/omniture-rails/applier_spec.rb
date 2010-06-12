@@ -21,4 +21,24 @@ describe "OmnitureRails::Applier" do
       :filter_terms => mapper_context.filter_terms
     }
   end
+  
+  it "should test all groups in a selector" do
+    tree = OmnitureRails::Parser.new(File.read(File.join(OmnitureRails.config.sc_directory, 'selectors_with_groups.sc'))).to_tree
+    
+    input_group_1 = {
+      :action => "show",
+      :filter => { :tags => "cat, shakespeare"}
+    }
+    
+    input_group_2 = {
+      :action => "new",
+      :filter => { :tags => "cat, shakespeare"}
+    }
+    
+    priority_map = {}
+    
+    mapper_context = Context.new
+    OmnitureRails::Applier.new(input_group_1, tree, priority_map, mapper_context).result.should == {:filter => "filtered!"}
+    OmnitureRails::Applier.new(input_group_2, tree, priority_map, mapper_context).result.should == {:filter => "filtered!"}
+  end
 end

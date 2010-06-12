@@ -7,11 +7,11 @@ describe "OmnitureRails::Parser" do
     tree.values[0].key.should == :channel
     tree.values[0].pre_value.should == "Search"
     
-    tree.children[0].selector.should == {:action => "new"}
+    tree.children[0].selector.should == [{:action => "new"}]
     tree.children[0].values[0].key.should == :pageName
     tree.children[0].values[0].pre_value.should == "New Search"
     
-    tree.children[1].selector.should == {:action => "show"}
+    tree.children[1].selector.should == [{:action => "show"}]
     tree.children[1].values[0].key.should == :pageName
     tree.children[1].values[0].pre_value.should == "Search Results"
     tree.children[1].values[0].type.should == :static

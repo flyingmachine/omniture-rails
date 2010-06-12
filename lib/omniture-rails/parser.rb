@@ -92,12 +92,15 @@ module OmnitureRails
       end
       
       def to_selector
-        selector = {}
-        @stripped_source.split(" ").each do |pair|
-          key, value = pair.split(":")
-          selector[key.to_sym] = value || nil
+        @stripped_source.split(",").collect do |group|
+          selector = {}
+          group = group.strip
+          group.split(" ").each do |pair|
+            key, value = pair.split(":")
+            selector[key.to_sym] = value || nil
+          end
+          selector
         end
-        selector
       end
       
       def to_value

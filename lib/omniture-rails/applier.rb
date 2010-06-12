@@ -37,9 +37,12 @@ module OmnitureRails
       end
     end
     
+    # REFACTOR to selector class
     def selector_matches?(selector)
-      selector.keys.all? do |key|
-        @input[key] == selector[key] || selector[key].nil? && @input.has_key?(key)
+      selector.any? do |group|
+        group.keys.all? do |key|
+          @input[key] == group[key] || group[key].nil? && @input.has_key?(key)
+        end
       end
     end
     

@@ -1,3 +1,4 @@
+/ test comment
 :channel Search
   
 action:new
