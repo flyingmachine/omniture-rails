@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Daniel Higginbotham"]
-  s.date = %q{2010-06-11}
+  s.date = %q{2010-06-12}
   s.description = %q{Tool for integrating Omniture in a Rails project}
   s.email = %q{daniel@flyingmachinestudios.com}
   s.extra_rdoc_files = [
@@ -35,9 +35,11 @@ Gem::Specification.new do |s|
      "rails/concern.rb",
      "rails/init.rb",
      "spec/fixtures/application.sc",
+     "spec/fixtures/config.yml",
      "spec/fixtures/search.sc",
      "spec/fixtures/with_import.sc",
      "spec/lib/omniture-rails/applier_spec.rb",
+     "spec/lib/omniture-rails/config_spec.rb",
      "spec/lib/omniture-rails/parser_spec.rb",
      "spec/omniture-rails_spec.rb",
      "spec/spec.opts",
@@ -46,10 +48,11 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://github.com/flyingmachine/omniture-rails}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.5}
+  s.rubygems_version = %q{1.3.6}
   s.summary = %q{Tool for integrating Omniture in a Rails project}
   s.test_files = [
     "spec/lib/omniture-rails/applier_spec.rb",
+     "spec/lib/omniture-rails/config_spec.rb",
      "spec/lib/omniture-rails/parser_spec.rb",
      "spec/omniture-rails_spec.rb",
      "spec/spec_helper.rb"

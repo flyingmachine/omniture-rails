@@ -21,3 +21,4 @@ OmnitureRails::TREES = Dir[File.join(OmnitureRails.config.sc_directory, '*.sc')]
   hash[File.basename(filename)[0..-4].to_sym] = OmnitureRails::Parser.new(File.read(filename)).to_tree
   hash
 end
+OmnitureRails.config.set(YAML.load(File.read(File.join(RAILS_ROOT, "config", "omniture.yml")))[RAILS_ENV])

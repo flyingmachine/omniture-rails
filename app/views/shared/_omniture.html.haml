@@ -5,7 +5,13 @@
       var s_account="#{OmnitureRails.config.tracking_account}";
       var s=s_gi(s_account);
       
-      #{OmnitureRails.values_for(omniture_input, OmnitureRails::TREES[controller_name.to_sym], {}, self).collect{|v| "s.#{v[0]} = #{v[1]}"}.join("\n")}
+      $.extend(s, #{
+        OmnitureRails.
+          values_for(omniture_input, OmnitureRails::TREES[controller_name.to_sym], {}, self).
+          delete_if{|k,v| !v}.
+          to_json.
+          gsub(",\"",",\n\"") #put each variable on a separate line
+      })
     
       /* WARNING: Changing the visitor namespace will cause drastic changes
       to how your visitor data is collected.  Changes should only be made

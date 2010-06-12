@@ -22,7 +22,7 @@ module OmnitureRails
     # String should be either a filename or YAML
     def set_with_string(config)
       if File.exists?(config)
-        set_with_io(File.open(config))
+        set_with_yaml(File.read(config))
       else
         set_with_yaml(config)
       end
