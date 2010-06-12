@@ -2,15 +2,6 @@
   :plain
     <!-- SiteCatalyst code version: H.1. Copyright 1997-2005 Omniture, Inc. More info available at http://www.omniture.com -->
     <script language="JavaScript"><!--
-      function trakSpecialLink(name, obj, link_type, event_type){    
-          var s_account="#{OmnitureRails.config.tracking_account}";
-          var s=s_gi(s_account);
-          s.linkTrackVars="";
-          s.linkTrackEvents=event_type;
-          s.events=event_type;	
-          s.tl(obj, link_type, name);	
-      }
-
       var s_account="#{OmnitureRails.config.tracking_account}";
       var s=s_gi(s_account);
       
@@ -19,13 +10,13 @@
       /* WARNING: Changing the visitor namespace will cause drastic changes
       to how your visitor data is collected.  Changes should only be made
       when instructed to do so by your account manager.*/
-      s.visitorNamespace="mckinseyknowledge"
+      s.visitorNamespace="#{OmnitureRails.config.visitor_namespace}"
 
       /************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
       var s_code=s.t();if(s_code)document.write(s_code)//--></script>
       <script language="JavaScript"><!--
       if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
       //--></script><noscript><img
-      src="http://mckinseyknow.122.2O7.net/b/ss/mckinseyknow/1/H.1--NS/0"
+      src="#{OmnitureRails.config.noscript_img_src}"
       height="1" width="1" border="0" alt="" /></noscript><!--/DO NOT REMOVE/-->
       <!-- End SiteCatalyst code version: H.1. -->
