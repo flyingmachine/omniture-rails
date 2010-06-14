@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Daniel Higginbotham"]
-  s.date = %q{2010-06-12}
+  s.date = %q{2010-06-13}
   s.description = %q{Tool for integrating Omniture in a Rails project}
   s.email = %q{daniel@flyingmachinestudios.com}
   s.extra_rdoc_files = [
@@ -24,6 +24,7 @@ Gem::Specification.new do |s|
      "Rakefile",
      "VERSION",
      "app/views/shared/_omniture.html.haml",
+     "app/views/shared/_omniture_javascript.html.haml",
      "lib/omniture-rails.rb",
      "lib/omniture-rails/applier.rb",
      "lib/omniture-rails/config.rb",
