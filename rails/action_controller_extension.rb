@@ -20,3 +20,5 @@ module OmnitureRails
 end
 
 ActionController::Base.send(:include, OmnitureRails::ActionControllerExtension)
+ActionController::Base.send(:include, OmnitureRailsHelper)
+ActionController::Base.helper(OmnitureRailsHelper)

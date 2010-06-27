@@ -19,13 +19,7 @@ module OmnitureRailsHelper
     var s_account="#{OmnitureRails.config.tracking_account}";
     var s=s_gi(s_account);
 
-    $.extend(s, #{
-      OmnitureRails.
-        values_for(omniture_input, OmnitureRails::TREES[controller_name.to_sym], {}, self).
-        delete_if{|k,v| !v}.
-        to_json.
-        gsub(",\"",",\n\"") #put each variable on a separate line
-    })
+    $.extend(s, #{sprops})
 
     /* WARNING: Changing the visitor namespace will cause drastic changes
     to how your visitor data is collected.  Changes should only be made
@@ -35,5 +29,13 @@ module OmnitureRailsHelper
     /************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
     var s_code=s.t();if(s_code)document.write(s_code)
     EOS
+  end
+  
+  def sprops
+    OmnitureRails.
+      values_for(omniture_input, OmnitureRails::TREES[controller_name.to_sym], {}, self).
+      delete_if{|k,v| !v}.
+      to_json.
+      gsub(",\"",",\n\"") #put each variable on a separate line
   end
 end
