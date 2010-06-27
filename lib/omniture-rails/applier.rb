@@ -41,9 +41,13 @@ module OmnitureRails
     def selector_matches?(selector)
       selector.any? do |group|
         group.keys.all? do |key|
-          @input[key] == group[key] || group[key].nil? && @input.has_key?(key)
+          input_has_key?(key) && (@input[key] == group[key] || group[key].nil?)
         end
       end
+    end
+    
+    def input_has_key?(key)
+      @input.has_key?(key) && (@input[key] == true || !@input[key].empty?)
     end
     
     def priority_keys

@@ -1,4 +1,4 @@
-# This is take from rails 3.0.0.beta3
+# This is taken from rails 3.0.0.beta3
 # TODO require Rails 3  active_support/concern from within a rails 2 app
 module OmnitureRails
   module Concern
