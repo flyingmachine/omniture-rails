@@ -24,8 +24,6 @@ Gem::Specification.new do |s|
      "Rakefile",
      "VERSION",
      "app/helpers/omniture_rails_helper.rb",
-     "app/views/shared/_omniture.html.haml",
-     "app/views/shared/_omniture_javascript.html.haml",
      "lib/omniture-rails.rb",
      "lib/omniture-rails/applier.rb",
      "lib/omniture-rails/config.rb",

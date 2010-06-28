@@ -36,6 +36,6 @@ module OmnitureRailsHelper
       values_for(omniture_input, OmnitureRails::TREES[controller_name.to_sym], {}, self).
       delete_if{|k,v| !v}.
       to_json.
-      gsub(",\"",",\n\"") #put each variable on a separate line
+      gsub(/,\s*"/,",\n\"") #put each variable on a separate line
   end
 end
