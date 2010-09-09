@@ -35,6 +35,7 @@ module OmnitureRailsHelper
     OmnitureRails.
       values_for(omniture_input, OmnitureRails::TREES[controller_name.to_sym], {}, self).
       delete_if{|k,v| !v}.
+      inject({}){|return_value, value| return_value[value[0]] = h(value[1]); return_value }. #html escape
       to_json.
       gsub(/,\s*"/,",\n\"") #put each variable on a separate line
   end
